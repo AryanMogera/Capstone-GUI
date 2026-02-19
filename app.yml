@@ -1,0 +1,4 @@
+port: "AUTO"      # or "COM5" / "/dev/ttyACM0"
+baud: 115200
+poll_ms: 200
+log_csv: "logs/session.csv"
