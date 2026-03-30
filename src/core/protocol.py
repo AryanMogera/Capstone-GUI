@@ -6,17 +6,17 @@ import json
 
 ParsedPacket = Dict[str, Any]
 
-
 def parse_packet(line: str) -> Optional[ParsedPacket]:
     """
-    Parse a newline-delimited JSON telemetry packet.
+    Parse newline-delimited JSON telemetry packet from STM32.
 
-    Expected keys (all optional):
-      - v    : list of cell voltages
-      - tc   : list of temperatures
-      - i    : pack current (A)
-      - soc  : 0..1 float
-      - fault: integer bitfield
+    Expected (recommended) keys:
+      - s     : int state (0..7)
+      - v     : list[float] length 4 (series-group voltages)
+      - tc    : list[float] length 8 (temps; 2 per series group: A,B)
+      - i     : float pack current (A)
+      - soc   : float 0..1
+      - fault : int bitfield
     """
     try:
         data = json.loads(line)
