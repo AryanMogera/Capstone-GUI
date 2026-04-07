@@ -15,7 +15,6 @@ def parse_packet(line: str) -> Optional[ParsedPacket]:
       - v     : list[float] length 4 (series-group voltages)
       - tc    : list[float] length 8 (temps; 2 per series group: A,B)
       - i     : float pack current (A)
-      - soc   : float 0..1
       - fault : int bitfield
     """
     try:
@@ -23,5 +22,5 @@ def parse_packet(line: str) -> Optional[ParsedPacket]:
         if not isinstance(data, dict):
             return None
         return data
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, TypeError):
         return None
