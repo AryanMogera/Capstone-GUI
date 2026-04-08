@@ -90,7 +90,7 @@ Dependencies are listed in `requirements.txt`:
    ```
 4. Run the app:
    ```powershell
-   py -3 src/main.py
+   python src/main.py
    ```
 
 ## Demo Mode vs Hardware Mode
